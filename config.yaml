@@ -1,0 +1,41 @@
+HIT:
+  name: Hit Promotional Products
+  services:
+    INV:
+      2.0.0:
+        prod_url: https://ppds.hitpromo.net/inventoryV2
+        stage_url: https://dsstandardtest.hitpromo.net/inventoryV2
+      1.2.1:
+        prod_url: https://ppds.hitpromo.net/inventory
+        stage_url: https://dsstandardtest.hitpromo.net/inventory
+    PPC:
+      1.0.0:
+        prod_url: https://ppds.hitpromo.net/pricingAndConfiguration
+        stage_url: https://dsstandardtest.hitpromo.net/pricingAndConfiguration
+    Product:
+      1.0.0:
+        prod_url: https://ppds.hitpromo.net/productData
+        stage_url: https://dsstandardtest.hitpromo.net/productData
+      2.0.0:
+        prod_url: https://ppds.hitpromo.net/productDataV2RC1?ws=1
+        stage_url: https://dsstandardtest.hitpromo.net/productDataV2RC1?ws=1
+    MED:
+      1.1.0:
+        prod_url: https://ppds.hitpromo.net/productMedia
+        stage_url: https://dsstandardtest.hitpromo.net/productMedia
+    ODRSTAT:
+      1.0.0:
+        prod_url: https://ppds.hitpromo.net/orderStatus
+        stage_url: https://dsstandardtest.hitpromo.net/orderStatus
+    OSN:
+      1.0.0:
+        prod_url: https://ppds.hitpromo.net/orderShipmentNotification
+        stage_url: https://dsstandardtest.hitpromo.net/orderShipmentNotification
+    PO:
+      1.0.0:
+        prod_url: https://ppds.hitpromo.net/poServiceFinal
+        stage_url: https://dsstandardtest.hitpromo.net/poServiceFinal
+    INVC:
+        1.0.0:
+            prod_url: https://ppds.hitpromo.net/invoiceV1RC1
+            stage_url: https://dsstandardtest.hitpromo.net/invoiceV1RC1
