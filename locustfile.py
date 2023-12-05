@@ -5,6 +5,7 @@ from jinja2 import Environment, FileSystemLoader
 import yaml
 from locust import HttpUser, task, between
 
+DEBUG = int(os.getenv('DEBUG', 0))  # be careful only 0/1 are should be valid values
 ENVIRONMENT = os.getenv('ENVIRONMENT', 'staging').lower()
 ENVIRONMENT_URL = 'prod_url' if ENVIRONMENT == 'production' else 'stage_url'
 SUPPLIER_CODE = os.getenv('SUPPLIER_CODE', 'HIT')
@@ -31,15 +32,18 @@ class PromoConfig:
         return self.data[SUPPLIER_CODE]["services"][service][service_version][ENVIRONMENT_URL]
 
 
-class SoapUser:
+class SoapUserMixin:
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.env = Environment(loader=FileSystemLoader('templates'))
         self.config = PromoConfig()
+        self.username = os.getenv('PROMO_USERNAME')
+        self.password = os.getenv('PROMO_PASSWORD')
 
     def post(self, service: str, service_version: str, template_path: str, soap_action: str, context: dict):
         template = self.env.get_template(template_path)
+        context |= {'username': self.username, 'password': self.password}
         soap_request_body = template.render(**context)
 
         headers = {
@@ -47,22 +51,26 @@ class SoapUser:
             'SOAPAction': soap_action
         }
         url = self.get_service_url(service, service_version)
-        print(url)
-        print(soap_action)
-        print(soap_request_body)
-        return self.client.post(url, name=soap_action, data=soap_request_body, headers=headers)
+        ret = self._post(url, soap_action, soap_request_body, headers)
+        return ret
+
+    def _post(self, url, soap_action, soap_request_body, headers):
+        if DEBUG:
+            print(f'url: {url}')
+            print(f'soap_action: {soap_action}')
+            print(f'soap_request_body: {soap_request_body}')
+        ret = self.client.post(url, name=soap_action, data=soap_request_body, headers=headers)
+        if DEBUG:
+            print(f'status_code: {ret.status_code}')
+            print(f'response: {ret.text}')
+        return ret
 
     def get_service_url(self, service: str, service_version: str):
         return self.config.get_url(service, service_version)
 
 
-class PromoStandardsUser(SoapUser, HttpUser):
+class PromoStandardsUser(SoapUserMixin, HttpUser):
     wait_time = between(1, 5)
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.username = os.getenv('PROMO_USERNAME')
-        self.password = os.getenv('PROMO_PASSWORD')
 
     @task(1)
     def get_product_sellable(self):
@@ -70,19 +78,17 @@ class PromoStandardsUser(SoapUser, HttpUser):
         context = {
             'productId': None, 'isSellable': True,
             'localizationCountry': 'US', 'localizationLanguage': 'en', 'wsVersion': '2.0.0',
-            'username': self.username, 'password': self.password
         }
 
         self.post('Product', '2.0.0',
                   'product-data/version-2-0-0/get-sellables.xml', soap_action, context)
 
-    @task(20)
+    @task(10)
     def get_product(self):
         soap_action = 'getProduct'
         context = {
             'productId': T_SHIRT_PRODUCT_CODE,
             'localizationCountry': 'US', 'localizationLanguage': 'en', 'wsVersion': '2.0.0',
-            'username': self.username, 'password': self.password
         }
 
         self.post('Product', '2.0.0',
@@ -93,7 +99,6 @@ class PromoStandardsUser(SoapUser, HttpUser):
         soap_action = 'getProductDateModified'
         context = {
             'changeTimeStamp': last_week.isoformat(), 'wsVersion': '2.0.0',
-            'username': self.username, 'password': self.password
         }
         self.post('Product', '2.0.0',
                   'product-data/version-2-0-0/get-product-date-modified.xml', soap_action, context)
@@ -103,7 +108,6 @@ class PromoStandardsUser(SoapUser, HttpUser):
         soap_action = 'getProductCloseOut'
         context = {
             'wsVersion': '2.0.0',
-            'username': self.username, 'password': self.password
         }
         self.post('Product', '2.0.0',
                   'product-data/version-2-0-0/get-product-closeout.xml', soap_action, context)

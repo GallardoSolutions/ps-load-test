@@ -1,20 +1,20 @@
 # ps-load-test
 
-A LocustIO Project to help Promotional Industry Suppliers to test their own PromoStandards environments
+A `LocustIO` Project to help `Promotional Industry` Suppliers to test their own `PromoStandards` environments
 
-You should try it first on staging and then on production.
+You should try it first on `staging` and then on `production`.
 
-We hope it helps you, to find issues before your customers do.
+We hope it helps you, as a Supplier, to find issues before your customers do.
 
-It uses Jinja2 templates to generate data for the following PromoStandards methods:
-- Product Data
-- Media Content
-- Inventory
-- Product Pricing and Configuration
-- Order Shipment Notification
-- Order Status
-- Invoice
-- Purchase Order
+It uses [Jinja2 templates](https://jinja.palletsprojects.com/en/3.1.x/) to generate data for the following `PromoStandards` services:
+- [x] Product Data (2.0.0)
+- [ ] Media Content
+- [ ] Inventory
+- [ ] Product Pricing and Configuration
+- [ ] Order Shipment Notification
+- [ ] Order Status
+- [ ] Invoice
+- [ ] Purchase Order
 
 Here is the starting point to understand the project: [locustio](https://locust.io/)
 
