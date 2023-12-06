@@ -10,7 +10,7 @@ from template_helper import TemplateHelper
 
 ENVIRONMENT = os.getenv('ENVIRONMENT', 'staging').lower()
 SUPPLIER_CODE = os.getenv('SUPPLIER_CODE', 'HIT')
-T_SHIRT_PRODUCT_CODE = os.getenv('T_SHIRT_PRODUCT_CODE', '3001C')
+T_SHIRT_PRODUCT_CODE = os.getenv('T_SHIRT_PRODUCT_CODE', '5280')  # '3001C'
 HARD_GOODS_PRODUCT_CODE = os.getenv('HARD_GOODS_PRODUCT_CODE', '1001')
 
 now = datetime.now()
@@ -39,20 +39,22 @@ class SoapUserMixin:
         template = self.env.get_template(template_path)
         context |= {'username': self.username, 'password': self.password, 'wsVersion': service_version}
         soap_request_body = template.render(**context)
+        # remove empty lines
+        soap_request_body = ''.join([line.strip() for line in soap_request_body.split('\n') if line.strip()])
 
         headers = {
             'Content-Type': 'text/xml; charset=utf-8',
             'SOAPAction': soap_action
         }
         url = self.get_service_url(service, service_version)
-        ret = self._post(url, soap_action, soap_request_body, headers)
+        ret = self._post(url, soap_action, service_version, soap_request_body, headers)
         return ret
 
-    def _post(self, url, soap_action, soap_request_body, headers):
+    def _post(self, url, soap_action: str, version: str, soap_request_body, headers: dict):
         logging.debug(f'url: {url}')
         logging.debug(f'soap_action: {soap_action}')
         logging.debug(f'soap_request_body: {soap_request_body}')
-        ret = self.client.post(url, name=soap_action, data=soap_request_body, headers=headers)
+        ret = self.client.post(url, name=f'{soap_action} - {version}', data=soap_request_body, headers=headers)
         logging.debug(f'status_code: {ret.status_code}')
         logging.debug(f'response: {ret.text}')
         logging.debug('=' * 100)
@@ -64,7 +66,6 @@ class SoapUserMixin:
 
 class PromoStandardsUser(SoapUserMixin, HttpUser):
     wait_time = between(1, 5)
-
 
     @task(1)
     def get_product_sellable(self):
@@ -118,6 +119,38 @@ class PromoStandardsUser(SoapUserMixin, HttpUser):
             'changeTimeStamp': last_week.isoformat(),
         }
         self.post('MED', '1.1.0', soap_action, context)
+
+    @task(1)
+    def get_inventory_levels2_0_0(self):
+        soap_action = 'getInventoryLevels'
+        context = {
+            'productId': T_SHIRT_PRODUCT_CODE,
+        }
+        self.post('INV', '2.0.0', soap_action, context)
+
+    @task(1)
+    def get_inventory_levels1_2_1(self):
+        soap_action = 'getInventoryLevels'
+        context = {
+            'productId': T_SHIRT_PRODUCT_CODE,
+        }
+        self.post('INV', '1.2.1', soap_action, context)
+
+    @task(1)
+    def get_filter_values_2_0_0(self):
+        soap_action = 'getFilterValues'
+        context = {
+            'productId': T_SHIRT_PRODUCT_CODE,
+        }
+        self.post('INV', '2.0.0', soap_action, context)
+
+    @task(1)
+    def get_filter_values_1_2_1(self):
+        soap_action = 'getFilterValues'
+        context = {
+            'productId': T_SHIRT_PRODUCT_CODE,
+        }
+        self.post('INV', '1.2.1', soap_action, context)
 
 
 if __name__ == '__main__':

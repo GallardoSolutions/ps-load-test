@@ -19,7 +19,7 @@ We hope it helps you, as a Supplier, to find issues before your customers do.
 It uses [Jinja2 templates](https://jinja.palletsprojects.com/en/3.1.x/) to generate data for the following `PromoStandards` services:
 - [x] Product Data (2.0.0)
 - [x] Media Content (1.1.0)
-- [ ] Inventory
+- [x] Inventory (1.2.1, 2.0.0)
 - [ ] Product Pricing and Configuration
 - [ ] Order Shipment Notification
 - [ ] Order Status
@@ -28,7 +28,7 @@ It uses [Jinja2 templates](https://jinja.palletsprojects.com/en/3.1.x/) to gener
 
 If you are new to LocustIO we suggest you visit [locustio](https://locust.io/) to understand the project better.
 
-Key Configurations are in file config.yml where you need to update the `prod_url` and `staging_url` accordingly.
+Key Configurations are in file `config.yml` where you need to update the `prod_url` and `staging_url` accordingly.
 
 If you are testing on `stating` you still don't need to update the `prod_url` but you need to update the `staging_url`.
 

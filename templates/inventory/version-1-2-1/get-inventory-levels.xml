@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='utf-8'?>
+<soap-env:Envelope xmlns:soap-env="http://schemas.xmlsoap.org/soap/envelope/">
+    <soap-env:Body>
+        <ns0:Request xmlns:ns0="http://www.promostandards.org/WSDL/InventoryService/1.0.0/">
+            <ns0:wsVersion>
+                {{wsVersion}}
+            </ns0:wsVersion>
+            <ns0:id>
+                {{username}}
+            </ns0:id>
+            <ns0:password>
+                {{password}}
+            </ns0:password>
+            <ns0:productID>
+                {{productId}}
+            </ns0:productID>
+            <ns0:productIDtype>
+                Supplier
+            </ns0:productIDtype>
+        </ns0:Request>
+    </soap-env:Body>
+</soap-env:Envelope>

@@ -3,19 +3,19 @@ HIT:
   services:
     INV:
       2.0.0:
-        prod_url: https://ppds.hitpromo.net/inventoryV2
-        stage_url: https://dsstandardtest.hitpromo.net/inventoryV2
+        prod_url: https://ppds.hitpromo.net/inventoryV2?ws=1
+        stage_url: https://dsstandardtest.hitpromo.net/inventoryV2?ws=1
       1.2.1:
-        prod_url: https://ppds.hitpromo.net/inventory
-        stage_url: https://dsstandardtest.hitpromo.net/inventory
+        prod_url: https://ppds.hitpromo.net/inventory?ws=1
+        stage_url: https://dsstandardtest.hitpromo.net/inventory?ws=1
     PPC:
       1.0.0:
-        prod_url: https://ppds.hitpromo.net/pricingAndConfiguration
-        stage_url: https://dsstandardtest.hitpromo.net/pricingAndConfiguration
+        prod_url: https://ppds.hitpromo.net/pricingAndConfiguration?ws=1
+        stage_url: https://dsstandardtest.hitpromo.net/pricingAndConfiguration?ws=1
     Product:
       1.0.0:
-        prod_url: https://ppds.hitpromo.net/productData
-        stage_url: https://dsstandardtest.hitpromo.net/productData
+        prod_url: https://ppds.hitpromo.net/productData?ws=1
+        stage_url: https://dsstandardtest.hitpromo.net/productData?ws=1
       2.0.0:
         prod_url: https://ppds.hitpromo.net/productDataV2RC1?ws=1
         stage_url: https://dsstandardtest.hitpromo.net/productDataV2RC1?ws=1
@@ -25,17 +25,17 @@ HIT:
         stage_url: https://dsstandardtest.hitpromo.net/productMedia?ws=1
     ODRSTAT:
       1.0.0:
-        prod_url: https://ppds.hitpromo.net/orderStatus
-        stage_url: https://dsstandardtest.hitpromo.net/orderStatus
+        prod_url: https://ppds.hitpromo.net/orderStatus?ws=1
+        stage_url: https://dsstandardtest.hitpromo.net/orderStatus?ws=1
     OSN:
       1.0.0:
-        prod_url: https://ppds.hitpromo.net/orderShipmentNotification
-        stage_url: https://dsstandardtest.hitpromo.net/orderShipmentNotification
+        prod_url: https://ppds.hitpromo.net/orderShipmentNotification?ws=1
+        stage_url: https://dsstandardtest.hitpromo.net/orderShipmentNotification?ws=1
     PO:
       1.0.0:
-        prod_url: https://ppds.hitpromo.net/poServiceFinal
-        stage_url: https://dsstandardtest.hitpromo.net/poServiceFinal
+        prod_url: https://ppds.hitpromo.net/poServiceFinal?ws=1
+        stage_url: https://dsstandardtest.hitpromo.net/poServiceFinal?ws=1
     INVC:
         1.0.0:
-            prod_url: https://ppds.hitpromo.net/invoiceV1RC1
-            stage_url: https://dsstandardtest.hitpromo.net/invoiceV1RC1
+            prod_url: https://ppds.hitpromo.net/invoiceV1RC1?ws=1
+            stage_url: https://dsstandardtest.hitpromo.net/invoiceV1RC1?ws=1
