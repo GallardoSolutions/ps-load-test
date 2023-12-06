@@ -44,8 +44,15 @@ export $(cat .env | xargs)
 Remember to setup a virtual environment and run `pip install -r requirements.txt`
 
 ```shell
-locust --host=http://127.0.0.1:8089
+locust --host=https://psrestful.com
 ```
+
+or 
+
+```shell
+locust --host=https://psrestful.com --loglevel DEBUG
+```
+
 These will run a server by default on port `8089` [http://localhost:8089](http://localhost:8089)
 
 So you can go there and say how many users and Hatch rate (users spawned/second)
