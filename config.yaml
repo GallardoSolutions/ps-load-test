@@ -21,8 +21,8 @@ HIT:
         stage_url: https://dsstandardtest.hitpromo.net/productDataV2RC1?ws=1
     MED:
       1.1.0:
-        prod_url: https://ppds.hitpromo.net/productMedia
-        stage_url: https://dsstandardtest.hitpromo.net/productMedia
+        prod_url: https://ppds.hitpromo.net/productMedia?ws=1
+        stage_url: https://dsstandardtest.hitpromo.net/productMedia?ws=1
     ODRSTAT:
       1.0.0:
         prod_url: https://ppds.hitpromo.net/orderStatus

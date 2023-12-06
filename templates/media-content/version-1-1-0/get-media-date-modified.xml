@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='utf-8'?>
+<soap-env:Envelope xmlns:soap-env="http://schemas.xmlsoap.org/soap/envelope/">
+    <soap-env:Body>
+        <ns0:GetMediaDateModifiedRequest xmlns:ns0="http://www.promostandards.org/WSDL/MediaService/1.0.0/">
+            <ns1:wsVersion xmlns:ns1="http://www.promostandards.org/WSDL/MediaService/1.0.0/SharedObjects/">{{wsVersion}}
+            </ns1:wsVersion>
+            <ns2:id xmlns:ns2="http://www.promostandards.org/WSDL/MediaService/1.0.0/SharedObjects/">{{username}}</ns2:id>
+            <ns3:password xmlns:ns3="http://www.promostandards.org/WSDL/MediaService/1.0.0/SharedObjects/">
+                {{password}}
+            </ns3:password>
+            <ns4:cultureName xmlns:ns4="http://www.promostandards.org/WSDL/MediaService/1.0.0/SharedObjects/">{{cultureName}}
+            </ns4:cultureName>
+            <ns5:changeTimeStamp xmlns:ns5="http://www.promostandards.org/WSDL/MediaService/1.0.0/SharedObjects/">
+                {{changeTimeStamp}}
+            </ns5:changeTimeStamp>
+        </ns0:GetMediaDateModifiedRequest>
+    </soap-env:Body>
+</soap-env:Envelope>
