@@ -12,27 +12,32 @@ the maximum operating capacity of your system and determine which element is cau
 Improving your `PromoStandards` implementation is a key factor to improve your distributor's and end user's experience.
 It will help improve third party services like [PSRESTful](https://psrestful.com) and [PSMEDx](https://psmedx.com) as well.
 
+## Notes
+
 You should try it first on `staging` and then on `production`.
 
 We hope it helps you, as a Supplier, to find issues before your customers do.
 
-It uses [Jinja2 templates](https://jinja.palletsprojects.com/en/3.1.x/) to generate data for the following `PromoStandards` services:
-- [x] Product Data (2.0.0)
-- [x] Media Content (1.1.0)
-- [x] Inventory (1.2.1, 2.0.0)
-- [ ] Product Pricing and Configuration
-- [ ] Order Shipment Notification
-- [ ] Order Status
-- [ ] Invoice
-- [ ] Purchase Order
+It uses [Jinja2 templates](https://jinja.palletsprojects.com/en/3.1.x/) to generate data for the following `PromoStandards` requests.
 
-If you are new to LocustIO we suggest you visit [locustio](https://locust.io/) to understand the project better.
+If you are new to `LocustIO` we suggest you visit [locustio](https://locust.io/) to understand the project better.
 
 Key Configurations are in file `config.yml` where you need to update the `prod_url` and `staging_url` accordingly.
 
 If you are testing on `stating` you still don't need to update the `prod_url` but you need to update the `staging_url`.
 
 We used `Hit` endpoints in the configuration as an example, so you can understand how to use it, but you must update it with your own endpoints.
+
+
+## Supported PromoStandards Requests
+- [x] Product Data (2.0.0)
+- [x] Media Content (1.1.0)
+- [x] Inventory (1.2.1, 2.0.0)
+- [ ] Product Pricing and Configuration
+- [x] Order Shipment Notification (1.0.0)
+- [x] Order Status (1.0.0)
+- [x] Invoice
+- [ ] Purchase Order
 
 ## How to run it
 

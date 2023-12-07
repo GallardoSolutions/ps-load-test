@@ -152,6 +152,36 @@ class PromoStandardsUser(SoapUserMixin, HttpUser):
         }
         self.post('INV', '1.2.1', soap_action, context)
 
+    @task(1)
+    def get_order_status_types_1_0_0(self):
+        soap_action = 'getOrderStatusTypes'
+        context = {}
+        self.post('ODRSTAT', '1.0.0', soap_action, context)
+
+    @task(1)
+    def get_order_status_details_1_0_0(self):
+        soap_action = 'getOrderStatusDetails'
+        context = {'queryType': '4'}
+        self.post('ODRSTAT', '1.0.0', soap_action, context)
+
+    @task(1)
+    def get_order_shipment_notification_1_0_0(self):
+        soap_action = 'getOrderShipmentNotification'
+        context = {'queryType': '3', 'referenceNumber': '1234567890'}
+        self.post('OSN', '1.0.0', soap_action, context)
+
+    @task(1)
+    def get_invoices_1_0_0(self):
+        soap_action = 'getInvoices'
+        context = {'queryType': '3', 'requestedDate': last_week.isoformat()}
+        self.post('INVC', '1.0.0', soap_action, context)
+
+    @task(1)
+    def get_voided_invoices_1_0_0(self):
+        soap_action = 'getVoidedInvoices'
+        context = {'queryType': '1', 'referenceNumber': '2233'}
+        self.post('INVC', '1.0.0', soap_action, context)
+
 
 if __name__ == '__main__':
     log_starting_info()

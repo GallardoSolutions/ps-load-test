@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='utf-8'?>
+<soap-env:Envelope xmlns:soap-env="http://schemas.xmlsoap.org/soap/envelope/">
+    <soap-env:Body>
+        <ns0:GetOrderStatusDetailsRequest xmlns:ns0="http://www.promostandards.org/WSDL/OrderStatusService/1.0.0/">
+            <ns0:wsVersion>{{wsVersion}}</ns0:wsVersion>
+            <ns0:id>{{username}}</ns0:id>
+            <ns0:password>{{password}}</ns0:password>
+            <ns0:queryType>{{queryType}}</ns0:queryType>
+            <ns0:statusTimeStamp xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+        </ns0:GetOrderStatusDetailsRequest>
+    </soap-env:Body>
+</soap-env:Envelope>
