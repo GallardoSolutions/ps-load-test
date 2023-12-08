@@ -182,6 +182,38 @@ class PromoStandardsUser(SoapUserMixin, HttpUser):
         context = {'queryType': '1', 'referenceNumber': '2233'}
         self.post('INVC', '1.0.0', soap_action, context)
 
+    @task(1)
+    def get_available_locations_1_0_0(self):
+        soap_action = 'getAvailableLocations'
+        context = {'productId': T_SHIRT_PRODUCT_CODE, 'localizationCountry': 'US', 'localizationLanguage': 'en'}
+        self.post('PPC', '1.0.0', soap_action, context)
+
+    @task(1)
+    def get_fob_points_1_0_0(self):
+        soap_action = 'getFOBPoints'
+        context = {'productId': T_SHIRT_PRODUCT_CODE, 'localizationCountry': 'US', 'localizationLanguage': 'en'}
+        self.post('PPC', '1.0.0', soap_action, context)
+
+    @task(1)
+    def get_decoration_colors_1_0_0(self):
+        soap_action = 'getDecorationColors'
+        context = {'productId': T_SHIRT_PRODUCT_CODE, 'locationId': '8', 'localizationCountry': 'US',
+                   'localizationLanguage': 'en'}
+        self.post('PPC', '1.0.0', soap_action, context)
+
+    @task(1)
+    def get_available_charges_1_0_0(self):
+        soap_action = 'getAvailableCharges'
+        context = {'productId': HARD_GOODS_PRODUCT_CODE, 'localizationCountry': 'US', 'localizationLanguage': 'en'}
+        self.post('PPC', '1.0.0', soap_action, context)
+
+    @task(1)
+    def get_configuration_and_pricing_1_0_0(self):
+        soap_action = 'getConfigurationAndPricing'
+        context = {'productId': HARD_GOODS_PRODUCT_CODE, 'currency': 'USD', 'fobId': '1', 'priceType': 'Customer',
+                   'configurationType': 'decorated', 'localizationCountry': 'US', 'localizationLanguage': 'en'}
+        self.post('PPC', '1.0.0', soap_action, context)
+
 
 if __name__ == '__main__':
     log_starting_info()

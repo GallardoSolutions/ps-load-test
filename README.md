@@ -33,7 +33,7 @@ We used `Hit` endpoints in the configuration as an example, so you can understan
 - [x] Product Data (2.0.0)
 - [x] Media Content (1.1.0)
 - [x] Inventory (1.2.1, 2.0.0)
-- [ ] Product Pricing and Configuration
+- [x] Product Pricing and Configuration
 - [x] Order Shipment Notification (1.0.0)
 - [x] Order Status (1.0.0)
 - [x] Invoice

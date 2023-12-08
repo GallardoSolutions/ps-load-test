@@ -21,5 +21,5 @@ class TemplateHelper:
     def get_template_path(cls, service: str, version: str, soap_action: str) -> str:
         service_path = cls.trans[service]
         version_path = f'version-{version}'.replace('.', '-')
-        action_path = camel_to_kebab(soap_action)
+        action_path = 'get-fob-points' if soap_action == 'getFOBPoints' else camel_to_kebab(soap_action)
         return f'{service_path}/{version_path}/{action_path}.xml'

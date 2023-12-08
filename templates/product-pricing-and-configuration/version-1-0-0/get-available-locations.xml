@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='utf-8'?>
+<soap-env:Envelope xmlns:soap-env="http://schemas.xmlsoap.org/soap/envelope/">
+    <soap-env:Body>
+        <ns0:GetAvailableLocationsRequest xmlns:ns0="http://www.promostandards.org/WSDL/PricingAndConfiguration/1.0.0/">
+            <ns0:wsVersion>
+                {{wsVersion}}
+            </ns0:wsVersion>
+            <ns0:id>
+                {{username}}
+            </ns0:id>
+            <ns0:password>
+                {{password}}
+            </ns0:password>
+            <ns0:productId>
+                {{productId}}
+            </ns0:productId>
+            <ns0:localizationCountry>
+                {{localizationCountry}}
+            </ns0:localizationCountry>
+            <ns0:localizationLanguage>
+                {{localizationLanguage}}
+            </ns0:localizationLanguage>
+        </ns0:GetAvailableLocationsRequest>
+    </soap-env:Body>
+</soap-env:Envelope>
+
