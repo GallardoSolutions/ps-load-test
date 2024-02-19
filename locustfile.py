@@ -25,6 +25,12 @@ def log_starting_info():
     logging.info(f'HARD_GOODS_PRODUCT_CODE: {HARD_GOODS_PRODUCT_CODE}')
 
 
+def get_soap_action(action: str):
+    ret = 'urn:getMediaDateModified' if action == 'getMediaDateModified' and SUPPLIER_CODE == 'HIT' else action
+    logging.debug(f'ret: {ret}')
+    return ret
+
+
 class SoapUserMixin:
 
     def __init__(self, *args, **kwargs):
@@ -44,9 +50,10 @@ class SoapUserMixin:
 
         headers = {
             'Content-Type': 'text/xml; charset=utf-8',
-            'SOAPAction': soap_action
+            'SOAPAction': get_soap_action(soap_action)
         }
         url = self.get_service_url(service, service_version)
+        logging.info(f'url: {url}')
         ret = self._post(url, soap_action, service_version, soap_request_body, headers)
         return ret
 
@@ -77,7 +84,7 @@ class PromoStandardsUser(SoapUserMixin, HttpUser):
 
         self.post('Product', '2.0.0', soap_action, context)
 
-    @task(10)
+    @task(5)
     def get_product(self):
         soap_action = 'getProduct'
         context = {
@@ -101,7 +108,7 @@ class PromoStandardsUser(SoapUserMixin, HttpUser):
         context = {}
         self.post('Product', '2.0.0', soap_action, context)
 
-    @task(1)
+    @task(5)
     def get_media_content(self):
         soap_action = 'getMediaContent'
         context = {
@@ -120,7 +127,7 @@ class PromoStandardsUser(SoapUserMixin, HttpUser):
         }
         self.post('MED', '1.1.0', soap_action, context)
 
-    @task(1)
+    @task(10)
     def get_inventory_levels2_0_0(self):
         soap_action = 'getInventoryLevels'
         context = {

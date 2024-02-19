@@ -75,10 +75,13 @@ We used `Hit` endpoints in the configuration as an example, so you can understan
 
     This command will run a server by default on port `8089` [http://localhost:8089](http://localhost:8089)
 
-
 So you can go there and state how many users and hatch rate (users spawned/second)
 to start.
 
+Example:
+![Statistics](/images/statistics.png)
+
+![Charts](/images/charts.png)
 
 Happy load testing!
 

@@ -1,26 +1,23 @@
 <?xml version='1.0' encoding='utf-8'?>
 <soap-env:Envelope xmlns:soap-env="http://schemas.xmlsoap.org/soap/envelope/">
     <soap-env:Body>
-        <ns0:GetMediaContentRequest xmlns:ns0="http://www.promostandards.org/WSDL/MediaService/1.0.0/">
-            <ns1:wsVersion xmlns:ns1="http://www.promostandards.org/WSDL/MediaService/1.0.0/SharedObjects/">
+        <GetMediaContentRequest xmlns="http://www.promostandards.org/WSDL/MediaService/1.0.0/">
+            <wsVersion xmlns="http://www.promostandards.org/WSDL/MediaService/1.0.0/SharedObjects/">
                 {{wsVersion}}
-            </ns1:wsVersion>
-            <ns2:id xmlns:ns2="http://www.promostandards.org/WSDL/MediaService/1.0.0/SharedObjects/">{{username}}
-            </ns2:id>
-            <ns3:password xmlns:ns3="http://www.promostandards.org/WSDL/MediaService/1.0.0/SharedObjects/">
+            </wsVersion>
+            <id xmlns="http://www.promostandards.org/WSDL/MediaService/1.0.0/SharedObjects/">{{username}}
+            </id>
+            <password xmlns="http://www.promostandards.org/WSDL/MediaService/1.0.0/SharedObjects/">
                 {{password}}
-            </ns3:password>
+            </password>
             {% if cultureName is defined %}
-            <ns4:cultureName
-                    xmlns:ns4="http://www.promostandards.org/WSDL/MediaService/1.0.0/SharedObjects/">{{cultureName}}
-            </ns4:cultureName>
+            <cultureName xmlns="http://www.promostandards.org/WSDL/MediaService/1.0.0/SharedObjects/">{{cultureName}}
+            </cultureName>
             {% endif %}
-            <ns5:mediaType
-                    xmlns:ns5="http://www.promostandards.org/WSDL/MediaService/1.0.0/SharedObjects/">{{mediaType}}</ns5:mediaType>
-            <ns6:productId xmlns:ns6="http://www.promostandards.org/WSDL/MediaService/1.0.0/SharedObjects/">
+            <mediaType xmlns="http://www.promostandards.org/WSDL/MediaService/1.0.0/SharedObjects/">{{mediaType}}</mediaType>
+            <productId xmlns="http://www.promostandards.org/WSDL/MediaService/1.0.0/SharedObjects/">
                 {{productId}}
-            </ns6:productId>
-        </ns0:GetMediaContentRequest>
+            </productId>
+        </GetMediaContentRequest>
     </soap-env:Body>
 </soap-env:Envelope>
-

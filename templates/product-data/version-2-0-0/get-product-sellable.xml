@@ -10,11 +10,9 @@
             <ns3:password xmlns:ns3="http://www.promostandards.org/WSDL/ProductDataService/2.0.0/SharedObjects/">
                 {{password}}
             </ns3:password>
-            <ns4:localizationCountry
-                    xmlns:ns4="http://www.promostandards.org/WSDL/ProductDataService/2.0.0/SharedObjects/">{{localizationCountry}}
+            <ns4:localizationCountry xmlns:ns4="http://www.promostandards.org/WSDL/ProductDataService/2.0.0/SharedObjects/">{{localizationCountry}}
             </ns4:localizationCountry>
-            <ns5:localizationLanguage
-                    xmlns:ns5="http://www.promostandards.org/WSDL/ProductDataService/2.0.0/SharedObjects/">{{localizationLanguage}}
+            <ns5:localizationLanguage xmlns:ns5="http://www.promostandards.org/WSDL/ProductDataService/2.0.0/SharedObjects/">{{localizationLanguage}}
             </ns5:localizationLanguage>
             <ns6:isSellable xmlns:ns6="http://www.promostandards.org/WSDL/ProductDataService/2.0.0/SharedObjects/">
                 {{isSellable}}
